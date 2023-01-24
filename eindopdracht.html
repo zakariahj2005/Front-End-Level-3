@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eindopdracht- Hoofdstedenspel</title>
+</head>
+
+<body>
+    <script>
+        let userInput = prompt("Hoeveel keer wil je spelen?");
+        sessionStorage.setItem("Try_user", userInput);
+        
+        let triesuser = sessionStorage.getItem("Try_user");
+
+
+        const country = {
+            Netherlands: "Amsterdam",
+            Portugal: "Lisbon",
+            Spain: "Madrid",
+            Sweden: "Stockholm",
+            United_Kingdom: "London",
+            Cyprus: "Nicosia",
+            Lithuania: "Vilnius",
+            Czech_Republic: "Prague",
+            Estonia: "Tallin",
+            Hungary: "Budapest",
+            Austria: "Vienna",
+            Poland: "Warsaw",
+            Italy: "Rome",
+            Luxembourg: "Luxembourg",
+            Belgium: "Brussel",
+            Denmark: "Copenhagen",
+            Finland: "Helsinki",
+            France: "Paris",
+            Slovakia: "Bratislava",
+            Slovenia: "Ljubljana",
+            Germany: "Berlin",
+            Greece: "Athens",
+            Ireland: "Dublin",
+        }
+        let capitals = Object.values(country).toString().replace(/,/g, "\n");
+        let countries = Object.keys(country);
+
+        
+        let score = 0;
+        let keer = 0;
+
+
+        for (let z = 0; z < triesuser; z++) {
+            let random = Math.floor(Math.random() * countries.length);
+
+            let thisCountry = countries[random];
+
+
+            let result = prompt(`Wat is de hoofdstad van ${thisCountry}? \n${capitals}`);
+
+            if (result.toLowerCase() === country[thisCountry].toLowerCase()) {
+                alert("Dat is goed!");
+                score++;
+            } else {
+                alert("Dat is helaas verkeerd!")
+                score;
+            }
+
+            keer++;
+
+            sessionStorage.setItem("Score", score);
+            sessionStorage.setItem("Keer", keer);
+        }
+        score = sessionStorage.getItem("Score");
+        keer = sessionStorage.getItem("Keer");
+
+        alert(`Jou score is ${score}. Je hebt het ${keer} keer geprobeerd`);
+
+        sessionStorage.removeItem("keer");
+        sessionStorage.removeItem("score");
+
+        
+
+    </script>
+</body>
+
+</html>

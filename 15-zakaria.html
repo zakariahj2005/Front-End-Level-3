@@ -1,0 +1,16 @@
+<script>
+    let userName = sessionStorage.getItem('naam');
+
+    if(userName !== null){
+        alert('welkom treug ' + userName);
+    }
+    else{
+    let userInput = prompt("vul je naam in");
+    sessionStorage.setItem("naam", userInput);
+    userName = sessionStorage.getItem("naam");
+
+    alert("hallo " + userName);
+    }
+ </script>
+
+    
